@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  {% load static  %}
+  <head>
+    <meta charset="UTF-8">
+    <title>Molog || Hiring Portal</title>
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <nav>
+    <div class="logo">
+      <img src="{% static 'img/mologlogo.png' %}" alt="">
+    </div>
+  </nav>
+  <div class="container">
+    <div class="content">
+      <form action="/contact/" method='post' enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="user-details">
+          <div class="input-box">
+            <input type="text" placeholder="Full Name" id="name" name="name" autocomplete="off" required>
+          </div>
+          <div class="input-box">
+            <input type="email" placeholder="Email" id='email' name='email' autocomplete="off"  required>
+          </div>
+          <div class="input-box">
+            <input type="text" placeholder="Date of Birth" id='date' name='date' autocomplete="off"  required>
+          </div>
+          <div class="input-box">
+            <input type="number" placeholder="Mobile Number" id='telephone' name='telephone' autocomplete="off"  required pattern="[0-9]{10}" required>
+          </div>
+          <div class="input-box">
+            <input type="text" placeholder="Address" id='address' name='address' autocomplete="off"  required>
+          </div>
+          <div class="input-box">
+            <input type="number" placeholder="Total Experience In Years" id='experience' name='experience' autocomplete="off"  required>
+          </div>
+          <div class="input-box">
+            <input type="text" placeholder="Applying for ?" id='position' name='position' autocomplete="off"  required>
+          </div>
+          <div class="input-box">
+            <input type="file"  id='resume' name='resume' placeholder="Upload your resume /portfolio"  required>
+          </div>
+        </div>
+       
+        <div class="button">
+          <input type="submit" value="SUBMIT">
+        </div>
+        {% for message in messages %}
+        <div class="mainmsgdiv"><strong class="contactMsg" style="color:#516CFE; ">Message:</strong><span style="color:white;font-weight:500;">{{ message }}</span></div>
+      </div>
+        {% endfor %}
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
+ 
